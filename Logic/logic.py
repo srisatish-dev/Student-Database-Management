@@ -8,8 +8,8 @@ cursor = connection.cursor()
 
 class AddDetails:
     def __init__(self, Table_Name: str, Details: tuple):
-        self.Table_Name = Table_Name
         self.Details = Details
+        self.Table_Name = Table_Name
         self.Table_Name = getattr(self, self.Table_Name)
         self.Table_Name()
 
@@ -81,4 +81,34 @@ class GetDetails:
         print(Details)
 
 
-o = GetDetails("Student_Performance")
+# o = GetDetails("Student_Performance")
+class SearchDetails:
+
+    def __init__(self, Table_Name: str, ID_list: tuple):
+        self.Id_list = ID_list
+        self.Table_Name = Table_Name
+        self.Table_Name = getattr(self, self.Table_Name)
+        self.Details_list = []
+        for self.id in self.Id_list:
+            self.Details_list.append(self.Table_Name(self.id))
+            # print(self.id)
+        print(self.Details_list)
+
+    def Student_Course(self,id):
+        Query = f"""SELECT * FROM STUD_COURSE WHERE STUD_ID={id}"""
+        Details = cursor.execute(Query)
+        Details = Details.fetchone()
+        return(Details)
+
+    def Student_Details(self,id):
+        Query = f"""SELECT * FROM STUD_DETAILS WHERE STUD_ID = {id}"""
+        Details = cursor.execute(Query)
+        Details = Details.fetchone()
+        return(Details)
+    def Student_Performance(self,id):
+        Query = f"""SELECT * FROM STUD_PERFORMANCE WHERE STUD_ID = {id}"""
+        Details = cursor.execute(Query)
+        Details = Details.fetchone()
+        return(Details)
+
+o = SearchDetails("Student_Details", (1004, 1005,1003))
