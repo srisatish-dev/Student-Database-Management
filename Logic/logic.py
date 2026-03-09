@@ -111,4 +111,4 @@ class SearchDetails:
         Details = Details.fetchone()
         return(Details)
 
-o = SearchDetails("Student_Details", (1004, 1005,1003))
+o = SearchDetails("Student_Course", (1004, 1005, 1003))
