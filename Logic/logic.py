@@ -54,7 +54,31 @@ class AddDetails:
         connection.commit()
 
 
-o = AddDetails(
-    "Student_Course",(4444,"cece","cdwce","ecc","3c3cw","wdccd","cwcwc",8,20255)
-    
-)
+# o = AddDetails(
+#     "Student_Course",(4444,"cece","cdwce","ecc","3c3cw","wdccd","cwcwc",8,20255)
+
+# )
+class GetDetails:
+    def __init__(self,Table_Name: str):
+        self.Table_Name = Table_Name
+        self.Table_Name = getattr(self, self.Table_Name)
+        self.Table_Name()
+    def Student_Course(self):
+        Query = """SELECT * FROM STUD_COURSE"""
+        Details = cursor.execute(Query)
+        Details = Details.fetchall()
+        print(Details)
+
+    def Student_Details(self):
+        Query = """SELECT * FROM STUD_DETAILS"""
+        Details = cursor.execute(Query)
+        Details = list(Details.fetchall())
+        print(Details)
+    def Student_Performance(self):
+        Query = """SELECT * FROM STUD_PERFORMANCE"""
+        Details = cursor.execute(Query)
+        Details = list(Details.fetchall())
+        print(Details)
+
+
+o = GetDetails("Student_Performance")
