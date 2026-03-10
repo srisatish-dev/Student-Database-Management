@@ -55,7 +55,7 @@ class AddDetails:
 
 
 # o = AddDetails(
-#     "Student_Course",(4444,"cece","cdwce","ecc","3c3cw","wdccd","cwcwc",8,20255)
+#     "Student_Course",(4445,"ceceC","cdwCce","eCcc","3cC3cw","wdCccd","cwCcwc",9,20256)
 
 # )
 class GetDetails:
@@ -63,6 +63,7 @@ class GetDetails:
         self.Table_Name = Table_Name
         self.Table_Name = getattr(self, self.Table_Name)
         self.Table_Name()
+        connection.commit()
     def Student_Course(self):
         Query = """SELECT * FROM STUD_COURSE"""
         Details = cursor.execute(Query)
@@ -93,6 +94,7 @@ class SearchDetails:
             self.Details_list.append(self.Table_Name(self.id))
             # print(self.id)
         print(self.Details_list)
+        connection.commit()
 
     def Student_Course(self,id):
         Query = f"""SELECT * FROM STUD_COURSE WHERE STUD_ID={id}"""
@@ -111,4 +113,27 @@ class SearchDetails:
         Details = Details.fetchone()
         return(Details)
 
-o = SearchDetails("Student_Course", (1004, 1005, 1003))
+# o = SearchDetails("Student_Course", (1004, 1005, 1003))
+
+class DelDetails:
+    def __init__(self,Table_Name: str, ID_list: tuple):
+        self.Id_list = ID_list
+        self.Table_Name = Table_Name
+        self.Table_Name = getattr(self,self.Table_Name)
+        for self.id in self.Id_list:
+            self.Table_Name(self.id)
+        connection.commit()
+    def Student_Course(self,id):
+        Query = f"""DELETE FROM STUD_COURSE WHERE STUD_ID = {id};"""
+        cursor.execute(Query)
+
+    def Student_Details(self, id):
+        Query = f"""DELETE FROM STUD_DETAILS WHERE STUD_ID = {id};"""
+        cursor.execute(Query)
+
+    def Student_Performance(self, id):
+        Query = f"""DELETE FROM STUD_PERFORMANCE WHERE STUD_ID = {id};"""
+        cursor.execute(Query)
+        
+        
+O = DelDetails("Student_Course",())
