@@ -6,6 +6,7 @@ connection = sqlite3.connect(
 cursor = connection.cursor()
 
 
+
 class AddDetails:
     def __init__(self, Table_Name: str, Details: tuple):
         self.Details = Details
@@ -54,10 +55,6 @@ class AddDetails:
         connection.commit()
 
 
-# o = AddDetails(
-#     "Student_Course",(4445,"ceceC","cdwCce","eCcc","3cC3cw","wdCccd","cwCcwc",9,20256)
-
-# )
 class GetDetails:
     def __init__(self,Table_Name: str):
         self.Table_Name = Table_Name
@@ -81,8 +78,6 @@ class GetDetails:
         Details = list(Details.fetchall())
         print(Details)
 
-
-# o = GetDetails("Student_Performance")
 class SearchDetails:
 
     def __init__(self, Table_Name: str, ID_list: tuple):
@@ -112,8 +107,6 @@ class SearchDetails:
         Details = cursor.execute(Query)
         Details = Details.fetchone()
         return(Details)
-
-# o = SearchDetails("Student_Course", (1004, 1005, 1003))
 
 class DelDetails:
     def __init__(self,Table_Name: str, ID_list: tuple):
